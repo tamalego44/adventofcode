@@ -1,22 +1,18 @@
+from aocd import get_data
+
 def parseInput():
-    with open("input.txt") as file:
-        # Parse input
-        None
+    data = get_data() # str
     
-    return None
+    return data
 
 def part1():
-    inputData = parseInput()
-
-    print("Not yet implemented")
+    data = parseInput()
 
 def part2():
-    inputData = parseInput()
-
-    print("Not yet implemented")
+    data = parseInput()
 
 print("Part 1 solution:")
-part1()
+print(part1())
 
 print("Part 2 solution:")
-part2()
+print(part2())
