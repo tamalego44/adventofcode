@@ -1,7 +1,13 @@
-from aocd import get_data
-
 def parseInput():
-    data = get_data() # str
+    if True:
+        filename = "sample.txt"
+    else:
+        filename = "input.txt"
+
+    data = []
+    with open(filename) as file:
+        for line in file:
+            data.append(line)
     
     return data
 
