@@ -19,8 +19,10 @@ def flash(data, i0, j0):
     for i in range(max(0,i0-1), min(len(data), i0+2)): 
         for j in range(max(0,j0-1), min(len(data[0]), j0+2)):
             if not (i == i0 and j == j0):
-                print((i, j))
-                
+                #print((i, j))
+                data[i][j] += 1
+    return data
+
 def part1():
     data = parseInput()
 
@@ -31,14 +33,20 @@ def part1():
                 for j in range(len(data)):
                     data[i][j] += 1
         
+        flashes = 0
         #Flashing
         while not done:
             done = True
             for i in range(len(data)):
                 for j in range(len(data)):
                     if data[i][j] >= 9:
-                        flash(data, i, j)
-                        exit()
+                        #print((i,j), "===")
+                        flashes += 1
+                        data[i][j] = -1
+                        data = flash(data, i, j)
+                        #exit()
+
+       
                         
         
     print(data)
