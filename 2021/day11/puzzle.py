@@ -45,9 +45,6 @@ def part1():
                         data[i][j] = -1
                         data = flash(data, i, j)
                         #exit()
-
-       
-                        
         
     print(data)
 
