@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define LMAX 100
+#define NMAX 10000
 int main(int argc, char *argv[]) {
 	// Verify proper args were used
 	// Usage: ./p<1/2> <filename>
@@ -15,6 +17,10 @@ int main(int argc, char *argv[]) {
 	}
 
 	FILE* fp;
+	char buff[LMAX];
 	fp = fopen(filename, "r");
 	
+	while (fgets(buff, LMAX, fp)) {
+		printf("%s", buff);
+	}
 }
