@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char *argv[]) {
 	// Verify proper args were used
@@ -7,6 +8,7 @@ int main(int argc, char *argv[]) {
 	if (argc != 2) {
 		printf("Improper Syntax. Usage: ./p<1/2> <filename>\n");
 		printf("Filename is likely \"sample.txt\" or \"input.txt\"\n");
+		exit(1);
 	}
 	else {
 		filename = argv[1];
