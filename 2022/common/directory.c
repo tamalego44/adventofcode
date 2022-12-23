@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 #include "directory.h"
+#include "funcs.h"
 
 #define NMAX 10000
 
@@ -108,5 +110,20 @@ int dir_sum(struct dir *d, int max) {
 	}
 	else {
 		return sum;
+	}
+}
+
+int dir_smallest(struct dir *d, int min) {
+	int smallest = INT_MAX;
+	int size = dir_size(d);
+	for (int i = 0; i < d->ndirs; i++) {
+		smallest = MIN(dir_smallest(d->dir_contents[i], min), smallest);
+	}
+
+	if (size > min) {
+		return MIN(smallest, size);
+	}
+	else {
+		return smallest;
 	}
 }

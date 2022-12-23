@@ -25,4 +25,5 @@ struct file* dir_subfile(struct dir *d, char *name, int size);
 void dir_print(struct dir *d, int depth);
 int dir_size(struct dir *d);
 int dir_sum(struct dir *d, int max);
+int dir_smallest(struct dir *d, int min);
 #endif
