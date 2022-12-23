@@ -1,3 +1,4 @@
 CC=gcc
-p1:
-p2:
+p1: llist.c
+p2: llist.c
+

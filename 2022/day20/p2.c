@@ -21,24 +21,29 @@ int main(int argc, char *argv[]) {
 	char buff[LMAX];
 	fp = fopen(filename, "r");
 	
-	//int dec_key = 811589153;	
+	long long int dec_key = 811589153;	
 	struct llist *l = newList();
 	int i = 0;
 	while (fgets(buff, LMAX, fp)) {
-		insertList(l, i, atoi(buff));
+		insertList(l, i, (((long long int) atoi(buff)) * dec_key));
 		i++;
 	}
 	//printList(l);
-	
-	for (int j = 0; j < i; j++) {
-		mixList(l, j);
+	//printf("%lld\n", l->size);
+
+	for (int k = 0; k < 10; k++) {
+		for (int j = 0; j < i; j++) {
+			mixList(l, j);
+			//printList(l);
+		}
 		//printList(l);
 	}
 
-	int score = 0;
+	long long int score = 0;
 	score += nAfterZeroList(l, 1000);
+	//printf("%lld", nAfterZeroList(l, 1000));
 	score += nAfterZeroList(l, 2000);
 	score += nAfterZeroList(l, 3000);
 
-	printf("Coordinate Sum: %d\n", score);
+	printf("Coordinate Sum: %lld\n", score);
 }

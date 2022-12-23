@@ -13,9 +13,9 @@ void printList(struct llist *list) {
     printf("[");
     struct node *p;
     for (p = list->head; p->next != list->head; p=p->next) {
-        printf("%d, ", p->data);
+        printf("%lld, ", p->data);
     }
-    printf("%d]\n", p->data);
+    printf("%lld]\n", p->data);
 }
 
 struct llist* newList() {
@@ -25,7 +25,7 @@ struct llist* newList() {
     return l;
 }
 
-void insertList(struct llist *list, int key, int data) {
+void insertList(struct llist *list, int key, long long int data) {
     struct node *link = (struct node*) malloc(sizeof(struct node));
 
     link->data = data;
@@ -50,11 +50,14 @@ void mixList(struct llist *list, int key) {
     while (link->key != key) {
         link = link->next;
     }
-    printf("%d\n", link->data);
+    //printf("%d\n", link->data);
 
     // Now link should point to the proper node to mix
-    if (link->data > 0) {
-        for (int i=0; i<link->data; i++) {
+    if (link->data != 0) {
+	long long int mod = link->data % (list->size - 1);
+	mod = mod < 0 ? mod + list->size - 1 : mod;
+	//printf("k:%d, d:%lld, s:%lld\n", link->key, link->data, mod);
+        for (int i=0; i < mod; i++) {
             link->prev->next=link->next;
             link->next->prev=link->prev;
             struct node *new = link->next->next;
@@ -63,8 +66,9 @@ void mixList(struct llist *list, int key) {
             link->next=new;
             new->prev=link;
         }
-    } else if (link->data < 0) {
-        for (int i=0; i<-(link->data); i++) {
+    } 
+    /*else if (link->data < 0) {
+        for (int i=0; i<((-link->data) % list->size); i++) {
             link->next->prev=link->prev;
             link->prev->next=link->next;
             struct node *new = link->prev->prev;
@@ -73,10 +77,10 @@ void mixList(struct llist *list, int key) {
             link->prev=new;
             new->next=link;
         }
-    }
+    }*/
 }
 
-int nAfterZeroList(struct llist *list, int n) {
+long long int nAfterZeroList(struct llist *list, int n) {
     struct node *link = list->head;
     while (link->data != 0) {
         link = link->next;
@@ -86,6 +90,6 @@ int nAfterZeroList(struct llist *list, int n) {
         link = link->next;
     }
 
-    printf("%d\n", link->data);
+    //printf("%d\n", link->data);
     return link->data;
 }

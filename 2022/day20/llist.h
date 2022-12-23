@@ -3,20 +3,20 @@
 
 struct node {
     int key;
-    int data;
+    long long int data;
     struct node *prev;
     struct node *next;
 };
 
 struct llist {
     struct node *head;
-    int size;
-}
+    long long int size;
+};
 
 void printList(struct llist *list);
 struct llist* newList();
-void insertList(struct llist *list, int key, int data);
+void insertList(struct llist *list, int key, long long int data);
 void mixList(struct llist *list, int key);
-int nAfterZeroList(struct llist *list, int n);
+long long int nAfterZeroList(struct llist *list, int n);
 
 #endif

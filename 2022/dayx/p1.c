@@ -20,6 +20,12 @@ int main(int argc, char *argv[]) {
 	char buff[LMAX];
 	fp = fopen(filename, "r");
 	
+	if (fp == NULL) {
+		perror("Error reading file");
+		exit(1);
+	}
+
+
 	while (fgets(buff, LMAX, fp)) {
 		printf("%s", buff);
 	}
