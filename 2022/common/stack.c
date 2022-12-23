@@ -3,7 +3,6 @@
 #include <string.h>
 #include "stack.h"
 
-#define LMAX 100
 #define NMAX 10000
 
 struct stack* stack_new() {
@@ -31,4 +30,19 @@ char stack_pop(struct stack *s) {
 
 char stack_peek(struct stack *s) {
 	return s->list[s->size - 1];
+}
+
+int stack_check(struct stack *s, int n) {
+	if (s->size < n) {
+		return 0;
+	}
+	for (int i = n; i > 0; i--) {
+		for (int j = i-1; j > 0; j--) {
+			if (s->list[s->size - i] == s->list[s->size - j]) {
+				return 0;
+			}
+		}
+	}
+	printf("%s\n", &s->list[s->size - n]);
+	return s->size;
 }

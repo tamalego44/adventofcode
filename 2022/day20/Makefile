@@ -1,4 +1,5 @@
 CC=gcc
-p1: llist.c
-p2: llist.c
+CFLAGS += -I../common
+p1: ../common/llist.c
+p2: ../common/llist.c
 

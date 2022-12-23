@@ -1,7 +1,7 @@
 #ifndef STACK_H_
 #define STACK_H_
 
-#define STACKMAX 1000
+#define STACKMAX 10000
 
 struct stack {
 	char list[STACKMAX];
@@ -14,5 +14,5 @@ void stack_push(struct stack *s, char c);
 char stack_peek(struct stack *s);
 void stack_print(struct stack *s);
 void stack_free(struct stack *s);
-
+int stack_check(struct stack *s, int n);
 #endif
