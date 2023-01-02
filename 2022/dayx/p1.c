@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "funcs.h"
 
 #define LMAX 100
 #define NMAX 10000
